@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %} Dashboard E-Lang Apps {% endblock %}
+
+{% block content %}
+
+<div class="row">
+     <div class="col-md-12 grid-margin">
+          <div class="row">
+               <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+
+               </div>
+               <div class="col-12 col-xl-4">
+                    <div class="justify-content-end d-flex">
+                         <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+
+                              <h5 class="btn btn-sm btn-light bg-white"><i class="fa-solid fa-clock"></i>
+                                   <span id="jam"><button class="btn btn-sm btn-light bg-white" type="button">
+                                   </span>
+                              </h5>
+                              /
+                              <h5 class="btn btn-sm btn-light bg-white"><i class="fa-solid fa-calendar"></i>
+                                   <span id="tanggal"><button class="btn btn-sm btn-light bg-white" type="button">
+                                   </span>
+                              </h5>
+                              </button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+{% endblock %}
