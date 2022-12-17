@@ -12,7 +12,7 @@ def users_db():
         return "Database User Telah dibuat" + ' <a href="/"> Kembali</a>'
 
 
-@app.route("/api/user", methods=["GET"])
+@app.route("/user/flutter", methods=["GET"])
 def getAllUsers():
     history = LogUsers.query.all()
     users_schema = SchemaUsers(many=True)

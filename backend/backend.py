@@ -81,6 +81,12 @@ def register():
             return redirect(url_for("dasbor"))
     return render_template("tampilan/register/register.html")
 
+def users():
+    if request.method == "GET":
+        user = LogTilang.query.all()
+        return render_template("tampilan/tilang/data.html", us = user)
+
+
 # Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -146,11 +152,24 @@ def dasbor():
 def tilang():
     if request.method == "GET":
         rv = LogTilang.query.all()
-        return render_template("tampilan/tilang/data.html", tilang = rv)
+        return render_template("tampilan/tilang/data.html", tilang=rv)
 
 @app.route('/users_form', methods=['GET', 'POST'])
 def users_form():
-    return render_template("tampilan/users/user.html")
+    if request.method == "GET":
+        us = LogUsers.query.all()
+        return render_template("tampilan/users/user.html", user=us)
+
+@app.route('/tilang/delete', methods=['GET', 'POST'])
+def delete_tilang(no_plat):
+    tilangs = db.session.execute(db.select(LogTilang).filter_by(no_plat=no_plat)).first()
+    if (tilangs is None):
+        return f"Data User dengan email {no_plat} tidak ditemukan!"
+    else:
+        tilang = tilangs[0]
+        db.session.delete(tilang)
+        db.session.commit()
+        return render_template("tampilan/tilang/data.html")
 
 @app.route('/upload')
 def upload():
@@ -284,6 +303,6 @@ def upload():
 def landing():
     return render_template("tampilan/landing/landing_page.html")
 
-@app.route('/landing/chatbot', methods=['GET', 'POST'])
-def chatbot():
-    return render_template("tampilan/chat/chatbot2.html")
+# @app.route('/landing/chatbot', methods=['GET', 'POST'])
+# def chatbot():
+#     return render_template("tampilan/chat/chatbot2.html")

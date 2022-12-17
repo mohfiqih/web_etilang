@@ -24,11 +24,7 @@
                               User
                          </h4>
 
-                         <form action="" method="POST">
-                              <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
-                                   value="<?php echo $this->security->get_csrf_hash(); ?>">
-                              <input type="hidden" name="user_id" value="">
-
+                         <form action="/users_form" method="POST">
                               <div class="form-floating mb-3">
                                    <label>Username</label>
                                    <input type="text" class="form-control" name="user_nama" value=""
@@ -52,20 +48,6 @@
                                         placeholder="Password Pengguna" autocomplete="off" required>
 
                               </div>
-                              <!--                              <div class="form-floating mb-3">-->
-                              <!--                                   <label for="example-select-floating">Level</label><br />-->
-                              <!--                                   <select class="form-control" name="user_level"-->
-                              <!--                                        aria-label="Floating label select example" required>-->
-                              <!--                                        <option value="">Choose Level</option>-->
-                              <!--                                        <option value="1">-->
-                              <!--                                             </option>-->
-                              <!--                                        <option value="2">-->
-                              <!--                                        </option>-->
-                              <!--                                        <option value="3">-->
-                              <!--                                        </option>-->
-                              <!--                                   </select>-->
-
-                              <!--                              </div>-->
 
                               <div class="text-center">
                                    <button type="submit" class="btn btn-success">Tambah</button>
@@ -88,37 +70,19 @@
                                    style="border-top:2px solid #eee;">
                                    <thead>
                                         <tr>
-                                             <th style="width:5px">Username</th>
                                              <th>Nama Lengkap</th>
                                              <th>Email</th>
-                                             <!--                                             <th style="width:100px">Action</th>-->
+                                             <th>Tanggal</th>
                                         </tr>
                                    </thead>
                                    <tbody>
+                                        {% for row in user %}
                                         <tr style="vertical-align:middle">
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <!--                                             <td>-->
-                                             <!--                                                  <div class="btn-group">-->
-                                             <!--                                                       <a href="<?php echo url(1) .'/edit/'. enkrip($d->user_id); ?>"-->
-                                             <!--                                                            class="btn btn-xs btn-info" data-bs-toggle="tooltip"-->
-                                             <!--                                                            data-bs-placement="top" title="Edit User">-->
-                                             <!--                                                            <i class="fas fa-edit"></i>-->
-                                             <!--                                                       </a>-->
-
-                                             <!--                                                       <?php if ($this->user_nama != $d->user_nama){ ?>-->
-                                             <!--                                                       <a href="<?php echo url(1) .'/hapus/'. enkrip($d->user_id); ?>"-->
-                                             <!--                                                            class="btn btn-xs btn-danger"-->
-                                             <!--                                                            onclick="return confirm('Yakin hapus user')"-->
-                                             <!--                                                            data-bs-toggle="tooltip" data-bs-placement="top"-->
-                                             <!--                                                            title="Hapus User">-->
-                                             <!--                                                            <i class="fas fa-trash"></i>-->
-                                             <!--                                                       </a>-->
-                                             <!--                                                       <?php } ?>-->
-                                             <!--                                                  </div>-->
-                                             <!--                                             </td>-->
+                                             <td>{{row.namalengkap}}</td>
+                                             <td>{{row.email}}</td>
+                                             <td>{{row.tanggal}}</td>
                                         </tr>
+                                        {% endfor %}
                                    </tbody>
                               </table>
                          </div>

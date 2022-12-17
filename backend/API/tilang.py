@@ -100,6 +100,7 @@ class TilangAPI(Resource):
             'filename': filePlate,
             'no_plat':no_plat,
             'pelanggaran': pelanggaran,
+            # 'no_plat': foto,
             'tanggal': tanggal_baru,
             'status': 200,
             'message': f"Data Tilang dengan Nomor Plat {no_plat} telah ditambah"

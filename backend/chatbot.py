@@ -79,5 +79,10 @@ def get_bot_response():
     userText = request.json.get('msg')
     return chatbot_response(userText)
 
+# @app.route("/post")
+# def post_chat():
+#     postText = request.json.post('')
+#     return get_bot_response()
+
 if __name__ == "__main__":
     app.run()
