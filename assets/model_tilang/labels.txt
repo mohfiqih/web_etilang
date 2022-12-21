@@ -1,2 +1,2 @@
-Pakai_Helm
-Tanpa_Helm
+0 Tidak Pakai Helm
+1 Pakai Helm

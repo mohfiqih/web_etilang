@@ -34,13 +34,15 @@ class LogTilang(db.Model):
     filename = db.Column(db.String(200), nullable=False)
     filename_pelanggaran = db.Column(db.String(200), nullable=False)
     pelanggaran = db.Column(db.String(50), nullable=False)
+    akurasi = db.Column(db.String(100), nullable=False)
     tanggal = db.Column(db.DATETIME, nullable=False)
 
-    def __init__(self, no_plat, filename, filename_pelanggaran, pelanggaran, tanggal):
+    def __init__(self, no_plat, filename, filename_pelanggaran, pelanggaran, akurasi, tanggal):
         self.no_plat = no_plat
         self.filename = filename
         self.filename_pelanggaran = filename_pelanggaran
         self.pelanggaran = pelanggaran
+        self.akurasi = akurasi
         self.tanggal = tanggal
 
 class TilangSchema(ma.SQLAlchemyAutoSchema):
@@ -50,30 +52,23 @@ class TilangSchema(ma.SQLAlchemyAutoSchema):
 
 parser4Param = reqparse.RequestParser()
 parser4Param.add_argument('filename', location='files', help='Filename Plat', type=FileStorage, required=True)
-# parser4Param.add_argument('file_pelanggaran', location='files', help='Filename Pelanggaran', type=FileStorage,
-#                           required=True)
+
 parser4Body = reqparse.RequestParser()
 parser4Body.add_argument('file', location='files', help='Filename Plat', type=FileStorage, required=True)
-# parser4Body.add_argument('file_pelanggaran', location='files', help='Filename Pelanggaran', type=FileStorage,
-#                          required=True)
 
 ################################# Database User ###########################################
 class LogUsers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # username = db.Column(db.String(100), nullable=False)
-    namalengkap = db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    # level = db.Column(db.String, nullable=False)
-    tanggal = db.Column(db.TIMESTAMP, nullable=False)
+    # tanggal = db.Column(db.TIMESTAMP, nullable=False)
 
-    def __init__(self, namalengkap, email, password, tanggal):
-        # self.username = username
-        self.namalengkap = namalengkap
+    def __init__(self, username, email, password):
+        self.username = username
         self.email = email
         self.password = password
-        # self.level = level
-        self.tanggal = tanggal
+        # self.tanggal = tanggal
 
 
 class SchemaUsers(ma.SQLAlchemyAutoSchema):
@@ -82,15 +77,11 @@ class SchemaUsers(ma.SQLAlchemyAutoSchema):
         load_instance = True
 
 parserParamUsers = reqparse.RequestParser()
-# parserParamUsers.add_argument('username', type=str, help='Masukan Username', location='args')
-parserParamUsers.add_argument('namalengkap', type=str, help='Masukan Nama', location='args')
+parserParamUsers.add_argument('username', type=str, help='Masukan Username', location='args')
 parserParamUsers.add_argument('email', type=str, help='Masukan Email', location='args')
 parserParamUsers.add_argument('password', type=str, help='Masukan Password', location='args')
-# parserParamUsers.add_argument('level', type=str, help='Masukan Level', location='args')
 
 parserBodyUsers = reqparse.RequestParser()
-# parserBodyUsers.add_argument('username', type=str, help='Masukan Username', location='args')
-parserBodyUsers.add_argument('namalengkap', type=str, help='Masukan Nama', location='args')
+parserBodyUsers.add_argument('username', type=str, help='Masukan Username', location='args')
 parserBodyUsers.add_argument('email', type=str, help='Masukan Email', location='args')
 parserBodyUsers.add_argument('password', type=str, help='Masukan Password', location='args')
-# parserBodyUsers.add_argument('level', type=str, help='Masukan Level', location='args')

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block title %} Live Stream {% endblock %}
+{% block title %} Video Testing {% endblock %}
 
 {% block content %}
 
@@ -21,20 +21,12 @@
                <div class="card">
                     <div class="card-body">
                          <div style="overflow: auto;">
-                              <div class="col-md-8 grid-margin stretch-card">
-                                   <div class="card tale-bg">
-                                        <div class="card-people mt-auto">
-                                             <center>
-                                                  <!-- <video controls width="800" height="450">
-                                                       <source src="{{url_for('static',filename='video/vid.mp4')}}" type="video/mp4">
-                                                  </video> -->
-                                                  <img style="border-radius: 10px;" src="{{ url_for('video') }}"
-                                                       width="70%" height="70%" />
-                                             </center>
-                                        </div>
-                                   </div>
-                              </div>
-
+                              <center>
+                                   <video controls width="100%" height="450">
+                                        <source src="{{url_for('static',filename='video/video_testing.mp4')}}"
+                                             type="video/mp4">
+                                   </video>
+                              </center>
                          </div>
                     </div>
                </div>

@@ -24,7 +24,7 @@ def getAllUsers():
 class UserAPI(Resource):
     def get(self):
         log_data = db.session.execute(
-            db.select(LogUsers.id, LogUsers.namalengkap, LogUsers.email, LogUsers.password)).all()
+            db.select(LogUsers.id, LogUsers.username, LogUsers.email, LogUsers.password)).all()
         if (log_data is None):
             return f"Tidak Ada Data User!"
         else:
@@ -32,11 +32,9 @@ class UserAPI(Resource):
             for user in log_data:
                 data.append({
                     'id': user.id,
-                    # 'username': user.username,
-                    'namalengkap': user.namalengkap,
+                    'username': user.username,
                     'email': user.email,
                     'password': user.password
-                    # 'tanggal': history.tanggal
                 })
             return data
 
@@ -45,19 +43,14 @@ class UserAPI(Resource):
         d = {}
         if request.method == "POST":
             args = parserBodyUsers.parse_args()
-            # username = args["username"]
-            namalengkap = args["namalengkap"]
+            username = args["username"]
             mail = args["email"]
             password = args["password"]
-            # level = args["level"]
-            tanggal = datetime.now()
-            tanggal_baru = tanggal.strftime('%Y-%m-%d %H:%M:%S')
 
             email = LogUsers.query.filter_by(email=mail).first()
 
             if email is None:
-                register = LogUsers(namalengkap=namalengkap, email=mail, password=generate_password_hash(password),
-                                    tanggal=tanggal_baru)
+                register = LogUsers(username=username, email=mail, password=password)
 
                 db.session.add(register)
                 db.session.commit()
@@ -65,7 +58,6 @@ class UserAPI(Resource):
                 return jsonify(["Register success"])
             else:
                 return jsonify(["Data Sudah Terdaftar"])
-            # return render_template('frontend/register/register.html')
 
 # Delete Image
 @api.route('/user/<string:email>')
@@ -79,3 +71,42 @@ class UserAPI(Resource):
             db.session.delete(tilang)
             db.session.commit()
             return f"Data User dengan Email {email} berhasil dihapus!"
+
+@app.route('/api/register', methods=["GET", "POST"])
+def flutter_register():
+    d={}
+    if request.method == "POST":
+        username = request.form["username"]
+        mail = request.form["email"]
+        password = request.form["password"]
+
+        email = LogUsers.query.filter_by(username=username, email=mail, password=password).first()
+
+        if email is None:
+            register = LogUsers(username=username, email=mail, password=password)
+
+            db.session.add(register)
+            db.session.commit()
+           
+            return jsonify(["Register success, Silahkan Login!"])
+        else:
+            # already exist
+            
+            return jsonify(["Username Sudah Ada, Cek Ulang!"])
+
+
+@app.route('/api/login', methods=["GET", "POST"])
+def flutter_login():
+    d = {}
+    if request.method == "POST":
+        mail = request.form["email"]
+        password = request.form["password"]
+
+        email = LogUsers.query.filter_by(email=mail, password=password).first()
+
+        if email is None:
+            # acount not found
+            return jsonify(["Login Gagal, Cek Kembali!"])
+        else:
+            # acount found
+            return jsonify(["Login Success, Selamat Datang!"]) 

@@ -22,6 +22,8 @@ nltk = "*"
 pillow = "*"
 opencv-python = "*"
 opencv-contrib-python-headless = "*"
+flask-mysqldb = "*"
+numpy = "*"
 
 [dev-packages]
 

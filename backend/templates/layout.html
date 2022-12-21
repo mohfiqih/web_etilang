@@ -76,7 +76,7 @@
                 <i class="ti-settings text-primary"></i>
                 Profil
               </a>
-              <a class="dropdown-item" href="/login">
+              <a class="dropdown-item" href="{{ url_for('logout') }}">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -122,8 +122,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/video_page">
+            <a class="nav-link" href="/video_testing">
               <i class="fa-solid fa-video menu-icon"></i>
+              <span class="menu-title">Video Testing</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/video_page">
+              <i class="fa-solid fa-camera menu-icon"></i>
               <span class="menu-title">Live Stream</span>
             </a>
           </li>
