@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style/chatbot.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="shortcut icon" href="{{url_for('static',filename='dasbor/template/images/favicon.png')}}" />
+  <!-- <link rel="shortcut icon" href="{{url_for('static',filename='dasbor/template/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{url_for('static',filename='dasbor/Simolang Logo.jpg')}}" /> -->
 </head>
 
 <body>
@@ -54,8 +55,8 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="#" class="logo">
-              <img src="{{url_for('static',filename='landing_page/assets/images/logo-web.png')}}" alt=""
-                style="width: 150px;height: 100px;">
+              <img style="width: 150px;height: 80px;" src="{{url_for('static',filename='dasbor/simolang-nav.jpg')}}"
+                alt="Simolang-Logo">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -63,15 +64,11 @@
               <li class="scroll-to-section"><a href="#" class="active"></a></li>
               <li class="scroll-to-section"><a href="#home" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-
-              <!--              <li class="scroll-to-section"><a href="#portfolio">Projects</a></li>-->
-              <!--              <li class="scroll-to-section"><a href="#blog">Blog</a></li>-->
               <li class="scroll-to-section"><a href="#contact">Contact</a></li>
-              <!-- <li class="scroll-to-section"><a href="#">Aturan E-Tilang</a></li> -->
               <li class="scroll-to-section"><a href="#services">Aturan E-Tilang</a></li>
               <li class="scroll-to-section">
-                <div class="border-first-button"><a data-bs-toggle="collapse" href="#multiCollapseExample1"
-                    role="button" aria-expanded="false" aria-controls="multiCollapseExample1">E-Tilang Apps
+                <div class="border-first-button"><a data-bs-toggle="collapse" href="#" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample1">Simolang Web
                   </a>
                 </div>
               </li>
@@ -100,12 +97,12 @@
               <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
                   <div class="col-lg-12">
-                    <h6>Website E-Tilang Apps</h6>
+                    <h6>Informasi Simolang</h6>
                     <h2>Lihat putusannya, Bayar dendanya, Ambil barang buktinya</h2>
                     <p>Patuhi aturannya #kapansaja dan #dimanasaja. </p>
                     <div class="border-first-button">
-                      <a href="https://t.me/akupit_bot">
-                        <i class="fa-brands fa-telegram"></i> Telebot E-Tilang
+                      <a href="https://t.me/EtilangBot">
+                        <i class="fa-brands fa-telegram"></i> Telebot Simolang
                       </a>
                     </div>
                   </div>
@@ -123,7 +120,7 @@
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
                 <img src="{{url_for('static',filename='landing_page/assets/images/etilang.png')}}" alt=""
-                  style="width: 400px;height: 400px;">
+                  style="width: 370px;height: 370px;">
               </div>
             </div>
           </div>
@@ -140,19 +137,76 @@
             <div class="col-lg-6">
               <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
                 <img src="{{url_for('static',filename='landing_page/assets/images/cctv.jpg')}}" alt=""
-                  style="width: 450px;height: 350px;">
+                  style="width: 370px;height: 300px;">
               </div>
             </div>
-            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s"
+              style="padding: 35px;">
               <div class="about-right-content">
                 <div class="section-heading">
                   <h6>About Us</h6>
-                  <h4>About <em>E-Tilang</em></h4>
+                  <h4>About <em>Simolang</em></h4>
                   <div class="line-dec"></div>
                 </div>
                 <p>Kini, tilang terhadap pengendara yang melanggar aturan hanya bisa dilakukan secara elektronik melalui
                   kamera Electronic Traffic Law Enforcement (ETLE). Instruksi tersebut tertuang dalam Surat Telegram
                   Nomor: ST/2264/X/HUM.3.4.5./2022, per tanggal 18 Oktober 2022.</p>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="90">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            70%<br>
+                            <span>AI</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="80">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            80%<br>
+                            <span>Website</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                      <div class="progress" data-percentage="80">
+                        <span class="progress-left">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                          <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">
+                          <div>
+                            80%<br>
+                            <span>Mobile Apps</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -461,7 +515,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2022 E-lang Apps Team 4.
+          <p>Copyright © 2022 Website Simolang
             <!--          <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>-->
         </div>
       </div>
@@ -470,7 +524,7 @@
 
   <!-- <button class="open-button" onclick="openForm()">Chat</button> -->
   <button class="border-first-button open-button" onclick="openForm()"><i class="fa-regular fa-comment"></i>
-    e-bot
+    Simo
   </button>
 
   <div class="chat-popup" id="myForm">
@@ -485,7 +539,7 @@
         <header class="msger-header">
           <div class="msger-header-title">
             <div class="row">
-              <i class="fas fa-bug col-10"></i> E-Bot <i class="fas fa-bug"></i>
+              <i class="fas fa-bug col-10"></i> Simo-Bot <i class="fas fa-bug"></i>
               <i class="fa-solid fa-xmark col-2" style="float: right;margin-top: 3px;" onclick="closeForm()"></i></a>
             </div>
           </div>
@@ -495,19 +549,19 @@
           <div class="msg left-msg">
             <div class="msg-bubble">
               <div class="msg-info">
-                <div class="msg-info-name">E-Bot</div>
+                <div class="msg-info-name">Simo-Bot</div>
                 <div class="msg-info-time">12:45</div>
               </div>
 
               <div class="msg-text wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-                Hi, welcome to E-Bot! Seputar tentang E-Tilang 😄
+                Hi, Welcome to Simo-Bot! Tanyakan Seputar E-Tilang 😄
               </div>
             </div>
           </div>
         </main>
 
         <form class="msger-inputarea">
-          <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+          <input type="text" class="msger-input" id="textInput" placeholder="Ketik pesan anda...">
           <button type="submit" class="msger-send-btn">Send</button>
         </form><br />
       </section>
@@ -526,7 +580,7 @@
     // Icons made by Freepik from www.flaticon.com
     const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
     const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-    const BOT_NAME = "E-Bot";
+    const BOT_NAME = "Simo-Bot";
     const PERSON_NAME = "You";
 
     msgerForm.addEventListener("submit", event => {

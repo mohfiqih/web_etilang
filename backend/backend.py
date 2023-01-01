@@ -34,51 +34,43 @@ labels = open('C:/web_capstone/assets/model_tilang/labels.txt', 'r').readlines()
 klasifikasi = cv2.CascadeClassifier(
                 'C:/web_capstone/assets/model_tilang/haarcascade_russian_plate_number.xml')
 
+# @app.route('/generate_frames')
 def generate_frames():
     camera = cv2.VideoCapture(0)
 
     while (camera.isOpened()):
         ret, img = camera.read()
+
         if ret == True:
-            img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
             
+            img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
+            # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             image = cv2.resize(img, (224, 224), interpolation=cv2.INTER_AREA)
             image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
             image = (image / 127.5) - 1
-            pelanggaran = labels[np.argmax(model.predict(image))]
+            probabilities = model.predict(image)
+            print(labels[np.argmax(probabilities)])
             
             dafPlate = klasifikasi.detectMultiScale(img, scaleFactor=1.3, minNeighbors=2)
             for (x, y, w, h) in dafPlate:
                 cv2.rectangle(img, (x, y), (x + w, y + h), (0, 250, 0), 3)
-                img = cv2.putText(img, pelanggaran, (10,450), cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),3,cv2.LINE_AA)
-            
-            frame = cv2.imencode('.jpg', img)[1].tobytes()
-            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-            time.sleep(0.1) 
+                img = cv2.putText(img, probabilities, (10,450), cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),3,cv2.LINE_AA)
+                print(probabilities)
 
-            
-                # filePlate = "Plate-" + str(i) + ".png"
-                # i = i + 1
-                # cut2 = foto[y:y + h, x:x + w]
-                # cv2.imwrite(filePlate, cut2)
-                # img = cv2.imread(filePlate)
-                # no_plat = pytesseract.image_to_string(img)
+            frame = cv2.imencode('.jpg', img)[1]
+            encode = frame.tobytes()
+            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + encode + b'\r\n')
+            time.sleep(0.1) 
         else:
             break
-        ## read the camera frame
-        # success,frame=camera.read()
-        # if not success:
-        #     break
-        # else:
-        #     ret,buffer=cv2.imencode('.jpg',frame)
-        #     frame=buffer.tobytes()
-        #
-        # yield(b'--frame\r\n'
-        #            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video')
 def video():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+# @app.route('/response')
+# def respon():
+#     return redne()
 
 # Template Live
 @app.route('/video_page')
@@ -93,25 +85,25 @@ def video_testing():
     # from keras.models import load_model
 
     # Load the model
-    model = load_model('assets/model_tilang/keras_model.h5')
+    # model = load_model('assets/model_tilang/keras_model.h5')
 
-    # CAMERA can be 0 or 1 based on default camera of your computer.
-    camera = cv2.VideoCapture('backend/static/video/video_testing.mp4')
+    # # CAMERA can be 0 or 1 based on default camera of your computer.
+    # camera = cv2.VideoCapture('backend/static/video/video_testing.mp4')
 
-    # Grab the labels from the labels.txt file. This will be used later.
-    labels = open('assets/model_tilang/labels.txt', 'r').readlines()
+    # # Grab the labels from the labels.txt file. This will be used later.
+    # labels = open('assets/model_tilang/labels.txt', 'r').readlines()
 
-    while True:
-        # Grab the webcameras image.
-        ret, image1 = camera.read()
-        image1 = cv2.resize(image1, (0,0), fx=0.5, fy=0.5)
-        image = cv2.resize(image1, (224, 224), interpolation=cv2.INTER_AREA)
-        image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-        image = (image / 127.5) - 1
-        probabilities = model.predict(image)
-        print(labels[np.argmax(probabilities)])
+    # while True:
+    #     # Grab the webcameras image.
+    #     ret, image1 = camera.read()
+    #     image1 = cv2.resize(image1, (0,0), fx=0.5, fy=0.5)
+    #     image = cv2.resize(image1, (224, 224), interpolation=cv2.INTER_AREA)
+    #     image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
+    #     image = (image / 127.5) - 1
+    #     probabilities = model.predict(image)
+    #     print(labels[np.argmax(probabilities)])
 
-    return render_template("tampilan/video/vide.html")
+    return render_template("tampilan/video/video.html")
     # camera.release()
     # cv2.destroyAllWindows()
 
@@ -199,7 +191,7 @@ def users_form():
 # 	return render_template("tampilan/users/add.html")
 
 # Delet Data Tilang
-@app.route('/tilang/delete', methods=['GET', 'POST'])
+@app.route('/delete', methods=['GET', 'POST'])
 def delete_tilang(no_plat):
     tilangs = db.session.execute(db.select(LogTilang).filter_by(no_plat=no_plat)).first()
     if (tilangs is None):
@@ -211,8 +203,9 @@ def delete_tilang(no_plat):
         return render_template("tampilan/tilang/data.html")
 
 # Template Upload
-@app.route('/upload')
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
+    
 	return render_template("tampilan/upload/upload.html")
 
 # Landing Page

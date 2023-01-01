@@ -1,2 +1,2 @@
-0 Tidak Pakai Helm
-1 Pakai Helm
+Tidak Pakai Helm
+Pakai Helm

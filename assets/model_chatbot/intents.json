@@ -7,7 +7,6 @@
                     "Apa kabar",
                     "Ada orang disana?",
                     "Hei",
-                    "Woy",
                     "Hai"
 
                ],
@@ -64,6 +63,9 @@
                     "Terima kasih",
                     "Makasih",
                     "Thanks",
+                    "makasi",
+                    "Thank you",
+                    "thanks",
                     "Terima Kasih Banyak",
                     "Terima kasih telah membantu saya"
                ],
@@ -119,7 +121,7 @@
                     "denda online"
                ],
                "responses": [
-                    "Baik, ingin membayar denda via apa? 1. via kantor Bank BRI, 2. via ATM BRI, 3. via Mobile Banking BRI, 4. via Internet Banking BRI, 5. via EDC BRI, 6. via transfer ATM dari bank lain. bisa ketikkan nomernya dibawah"
+                    "baik, ingin membayar denda via apa? 1. via kantor Bank BRI, 2. via ATM BRI, 3. via Mobile Banking BRI, 4. via Internet Banking BRI, 5. via EDC BRI, 6. via transfer ATM dari bank lain. bisa ketikkan nomernya dibawah"
                ],
                "context": [""]
           },
@@ -315,6 +317,7 @@
                "patterns": [
                     "Bagaimana jika mobil rental kena tilang?",
                     "rental motor",
+                    "rental mobil",
                     "rental"
                ],
                "responses": [
@@ -354,7 +357,6 @@
                ],
                "responses": [
                     "-Melanggar rambu lalu lintas dan marka jalan -Tidak mengenakan sabuk keselamatan -Mengemudi sambil mengoperasikan smartphone -Melanggar batas kecepatan -Menggunakan pelat nomor palsu -Berkendara melawan arus -Menerobos lampu merah -Tidak menggunakan helm -Berboncengan lebih dari 3 orang -Tidak menyalakan lampu saat siang hari bagi sepeda motor."
-
                ],
                "context": [""]
           },
@@ -382,7 +384,6 @@
                ],
                "responses": [
                     "kamera tilang elektronik dapat menangkap berbagai pelanggaran lalu lintas yang dilakukan oleh pengguna jalan. Mulai dari pelanggaran ganjil-genap, marka jalan, penggunaan ponsel saat berkendara, dan pelanggaran lainnya. Selain dapat menganalisis berbagai jenis pelanggaran, kamera berbentuk CCTV ini juga mengidentifikasi dan menganalisis jenis kendaraan, bahkan nomor registrasi kendaraan bermotor melalui nomor plat kendaraan yang dijadikan rekaman output dalam bentuk image ataupun video. Jadi, data-data kendaraan yang melanggar dari kamera tersebut akan disajikan kepada petugas kepolisian dan nantinya akan diverifikasi. Selanjutnya, petugas akan mengirimkan surat konfirmasi ke alamat pemilik kendaraan sesuai dengan registrasi kendaraan tersebut. Jadi, para pelanggar di jalan akan mendapatkan surat tilang ke alamat yang tertera pada surat kendaraan."
-
                ],
                "context": [""]
           },
