@@ -135,11 +135,10 @@ class TilangAPI(Resource):
         db.session.add(tilang)
         db.session.commit()
         return {
-            
-            'Nomor Plat' : no_plat,
             'Pelanggaran': pelanggaran,
             # 'Akurasi Pelanggaran': round(akurasi, 2),
-            '\n Tanggal': tanggal_baru,
+            'Tanggal': tanggal_baru,
+            'Nomor Plat': no_plat,
             # 'status'     : 200,
             # 'message'    : f"Data tilang masuk dengan nomor plat : {no_plat}"
         }
