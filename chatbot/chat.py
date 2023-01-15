@@ -48,7 +48,7 @@ def predict_class(sentence, model):
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
     ERROR_THRESHOLD = 0.25
-    results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
+    results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
@@ -79,10 +79,23 @@ def get_bot_response():
     userText = request.json.get('msg')
     return chatbot_response(userText)
 
-# @app.route("/post")
-# def post_chat():
-#     postText = request.json.post('')
-#     return get_bot_response()
+# @app.route("/get", methods=["POST"])
+# def chatbot_response():
+#     msg = request.form["msg"]
+#     if msg.startswith('my name is'):
+#         name = msg[11:]
+#         ints = predict_class(msg, model)
+#         res1 = getResponse(ints, intents)
+#         res =res1.replace("{n}",name)
+#     elif msg.startswith('hi my name is'):
+#         name = msg[14:]
+#         ints = predict_class(msg, model)
+#         res1 = getResponse(ints, intents)
+#         res =res1.replace("{n}",name)
+#     else:
+#         ints = predict_class(msg, model)
+#         res = getResponse(ints, intents)
+#     return res
 
 if __name__ == "__main__":
     app.run()

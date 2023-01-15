@@ -8,7 +8,7 @@
 
     /* Button used to open the chat form - fixed at the bottom of the page */
     .open-button {
-         background-color: rgb(81, 156, 255);
+         background-color: #0d6efd;
          color: white;
          padding: 16px 20px;
          border: none;
@@ -26,7 +26,7 @@
          display: none;
          position: fixed;
          bottom: 0;
-         right: 15px;
+         right: 1px;
          /* left: 15px; */
          border: 3px solid #f1f1f1;
          background-color: white;

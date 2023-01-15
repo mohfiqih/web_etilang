@@ -1,8 +1,8 @@
 :root {
   /* --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
-  --msger-bg: #fff;
-  --border: 2px solid #ddd;
-  --left-msg-bg: #ececec;
+  --msger-bg: rgb(255, 255, 255);
+  --border: 2px solid rgb(255, 255, 255);
+  --left-msg-bg: #ffffff;
   --right-msg-bg: #579ffb;
 }
 
@@ -45,7 +45,7 @@ body {
   width: 100%;
   max-width: 867px;
   margin: 25px 10px;
-  height: 450px;
+  height: 480px;
   border: var(--border);
   border-radius: 5px;
   background: var(--msger-bg);
@@ -60,7 +60,7 @@ body {
   text-align: center;
   border-bottom: var(--border);
   background: #eee;
-  color: #666;
+  color: rgb(255, 255, 255);
 }
 
 .msger-chat {
@@ -134,7 +134,7 @@ body {
 }
 
 .right-msg .msg-bubble {
-  background: var(--right-msg-bg);
+  background: #0d6efd;
   color: #fff;
   border-bottom-right-radius: 0;
 }
@@ -164,7 +164,7 @@ body {
 
 .msger-send-btn {
   margin-left: 10px;
-  background: #4da6e7;
+  background: #0d6efd;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -172,7 +172,7 @@ body {
 }
 
 .msger-send-btn:hover {
-  background: #4da6e7;
+  background: #0d6efd;
 }
 
 .msger-chat {

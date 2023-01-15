@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block title %} Upload Image {% endblock %}
+{% block title %} Admin - Upload Image {% endblock %}
 
 {% block content %}
 
@@ -9,6 +9,7 @@
      $(document).ready(function (e) {
           $('#upload').on('click', function () {
                var form_data = new FormData();
+               // var nomor_tilang = form_data["Nomor Tilang"];
                var no_plat = form_data["Nomor Plat"];
                var pelanggaran = form_data["Pelanggaran"];
                var tanggal = form_data["Tanggal"];
@@ -32,29 +33,16 @@
 
                     success: function (response) { // display success response
                          $('#loading').hide();
+
+                         // $('#nomor_tilang').html(response["Nomor Tilang"]);
+                         $('#no_plat').html(response["Nomor Plat"]);
+                         $('#pelanggaran').html(response["Pelanggaran"]);
+                         $('#tanggal_pelanggaran').html(response["Tanggal"]);
+
                          $('#berhasil').html(
-                              '<div style="color: green;">Berhasil upload gambar!</div>'
+                              '<div style="color: green;">Data tilang berhasil masuk!</div>'
                          );
-                         $.each(response, function (key, data) {
-                              if (key !== 'message') {
-                                  $('#no_plat').html(data);
-                                  $('#pelanggaran').html('');
-                                  $('#tanggal_pelanggaran').html('');
-<!--                                   $('#no_plat').append(-->
-<!--                                        key + '<br />'-->
-<!--                                   );-->
-<!--                                   $('#pelanggaran').append(-->
-<!--                                        data + '<br />'-->
-<!--                                   );-->
-<!--                                   $('#tanggal_pelanggaran').append(-->
-<!--                                        data + '<br />'-->
-<!--                                   );-->
-                              } else {
-                                   $('#berhasil').html(
-                                        '<div style="color: blue;">Berhasil Upload!</div>'
-                                   );
-                              }
-                         })
+
                     },
                     error: function (response) {
                          $('#loading').hide();
@@ -79,73 +67,79 @@
                </ol>
           </nav>
      </div>
-          <div class="row">
-               <div class="col-md-6">
-                    <div class="card">
-                         <div class="card-body">
-                              <div class="form-floating mb-4">
-                                   <label>Upload Image</label>
-                                   <input type="file" id="multiFiles" class="form-control" name="files[]"
-                                        multiple="multiple" placeholder="" autocomplete="off" required>
-                              </div>
-                              <!-- <h5>Output Data :</h5>
+     <div class="row">
+          <div class="col-md-6">
+               <div class="card">
+                    <div class="card-body">
+                         <div class="form-floating mb-4">
+                              <label>Upload Image</label>
+                              <input type="file" id="multiFiles" class="form-control" name="files[]" multiple="multiple"
+                                   placeholder="" autocomplete="off" required>
+                         </div>
+                         <!-- <h5>Output Data :</h5>
                               <p id="msg"></p> -->
-                              <div class="text-center">
-                                   <button id="upload" type="submit" class="btn btn-success">Tambah</button>
+                         <div class="text-center">
+                              <button id="upload" type="submit" class="btn btn-success">Tambah</button>
 
-                                   <a href="">
-                                        <button type="button" class="btn btn-danger">Cancel</button>
-                                   </a>
-                              </div>
+                              <a href="">
+                                   <button type="button" class="btn btn-danger">Cancel</button>
+                              </a>
                          </div>
                     </div>
                </div>
-               <div class="col-md-6">
-                    <div class="card">
-                         <div class="card-body" style="overflow-x: auto;">
-                              <h5>Data Tilang :</h5>
-                              <p id="loading"></p>
-                              <p id="msg"></p>
-                              <p id="berhasil"></p>
-                              <!-- <p id="ulang"></p> -->
-                              <table class="table table-striped table-hover table-vcenter"
-                                   style="border-top:2px solid #eee;">
-                                    <tr>
-                                          <th>Nomor Plat</th>
-                                          <td>:</td>
-                                          <td id="no_plat">Tidak ada data</td>
-                                      </tr>
-                                    <tr>
-                                          <th width="10px">Pelanggaran</th>
-                                          <td>:</td>
-                                          <td id="pelanggaran">Tidak ada data</td>
-                                    </tr>
-                                   <tr>
-                                          <th>Tanggal</th>
-                                          <td>:</td>
-                                          <td id="tanggal_pelanggaran">Tidak ada data</td>
-                                    </tr>
-<!--                                   <thead>-->
-<!--                                        <tr>-->
-<!--                                             <th>Nomor Plat</th>-->
-<!--                                             <th>Pelanggaran</th>-->
-<!--                                             <th>Tanggal</th>-->
-<!--                                        </tr>-->
-<!--                                   </thead>-->
-<!--                                   <tbody>-->
-<!--                                        <tr>-->
-<!--                                             <td id="no_plat"></td>-->
-<!--                                             <td id="pelanggaran">Tidak ada data</td>-->
-<!--                                             <td id="tanggal_pelanggaran"></td>-->
-<!--                                             &lt;!&ndash; <td class="text-center">Tidak ada data</td> &ndash;&gt;-->
-<!--                                        </tr>-->
+          </div>
+          <div class="col-md-6">
+               <div class="card">
+                    <div class="card-body" style="overflow-x: auto;">
+                         <h5>Data Tilang :</h5>
+                         <p id="loading"></p>
+                         <p id="msg"></p>
+                         <!-- <p id="berhasil"></p> -->
+                         <!-- <p id="message_helm"></p> -->
+                         <!-- <p id="ulang"></p> -->
+                         <table class="table table-striped table-hover table-vcenter"
+                              style="border-top:2px solid #eee;">
+                              <!-- <tr>
+                                   <th>Nomor Tilang</th>
+                                   <td>:</td>
+                                   <td id="nomor_tilang">Tidak ada data</td>
+                              </tr> -->
+                              <tr>
+                                   <th>Nomor Plat</th>
+                                   <td>:</td>
+                                   <td id="no_plat">Tidak ada data</td>
+                              </tr>
+                              <tr>
+                                   <th width="10px">Pelanggaran</th>
+                                   <td>:</td>
+                                   <td id="pelanggaran">Tidak ada data</td>
+                              </tr>
+                              <tr>
+                                   <th>Tanggal</th>
+                                   <td>:</td>
+                                   <td id="tanggal_pelanggaran">Tidak ada data</td>
+                              </tr>
+                              <!--                                   <thead>-->
+                              <!--                                        <tr>-->
+                              <!--                                             <th>Nomor Plat</th>-->
+                              <!--                                             <th>Pelanggaran</th>-->
+                              <!--                                             <th>Tanggal</th>-->
+                              <!--                                        </tr>-->
+                              <!--                                   </thead>-->
+                              <!--                                   <tbody>-->
+                              <!--                                        <tr>-->
+                              <!--                                             <td id="no_plat"></td>-->
+                              <!--                                             <td id="pelanggaran">Tidak ada data</td>-->
+                              <!--                                             <td id="tanggal_pelanggaran"></td>-->
+                              <!--                                             &lt;!&ndash; <td class="text-center">Tidak ada data</td> &ndash;&gt;-->
+                              <!--                                        </tr>-->
 
-<!--                                   </tbody>-->
-                              </table>
-                              <!-- <p id="msg"></p> -->
-                         </div>
+                              <!--                                   </tbody>-->
+                         </table>
+                         <!-- <p id="msg"></p> -->
                     </div>
                </div>
+          </div>
      </div>
 </div>
 

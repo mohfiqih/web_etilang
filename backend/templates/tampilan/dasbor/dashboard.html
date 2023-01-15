@@ -3,6 +3,7 @@
 {% block title %} Dashboard Web Simolang {% endblock %}
 
 {% block content %}
+{% if session.loggedin %}
 
 <div class="row">
      <div class="col-md-12 grid-margin">
@@ -68,9 +69,10 @@
                     <div class="col-md-6 mb-1 mb-lg-0 stretch-card transparent">
                          <div class="card card-light-blue">
                               <div class="card-body">
-                                   <p class="mb-4">Link Landing Page E-Tilang </p>
+                                   <p class="mb-4">Landing E-Tilang </p>
                                    <p class="fs-30 mb-2"></p>
-                                   <a style="text-decoration:none; color: white;" href="{{ url_for('landing') }}">
+                                   <a target="_blank" style="text-decoration:none; color: white;"
+                                        href="{{ url_for('landing') }}">
                                         <p>Klik Link..</p>
                                    </a>
                               </div>
@@ -135,5 +137,5 @@
           </div><br />
      </div>
 </div>
-
+{% endif %}
 {% endblock %}

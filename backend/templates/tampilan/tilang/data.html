@@ -1,12 +1,8 @@
 {% extends 'layout.html' %}
 
-{% block title %} Data Tilang {% endblock %}
+{% block title %} Admin - Data Tilang {% endblock %}
 
 {% block content %}
-
-<script src="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
      aria-label="breadcrumb">
@@ -37,28 +33,36 @@
                                         style="border-top:2px solid #eee;">
                                         <thead>
                                              <tr>
-                                                  <!-- <th style="width:5px">No</th> -->
+                                                  <!--                                                   <th style="width:5px">No</th>-->
+                                                  <th>Nomor Tilang</th>
                                                   <th>Nomor Plat</th>
-                                                  <th>Filename Plate</th>
+                                                  <!--                                                  <th>Filename Plate</th>-->
                                                   <th>Pelanggaran</th>
-                                                  <th>Filename Pelanggaran</th>
+                                                  <!--                                                  <th>Filename Pelanggaran</th>-->
+                                                  <!-- <th>Akurasi</th> -->
                                                   <th>Tanggal</th>
                                                   <th>Action</th>
                                              </tr>
                                         </thead>
                                         <tbody>
-                                             {% for row in tilang %}
+                                             {%for row in tilang%}
+
                                              <tr style="vertical-align:middle">
-                                                  <!-- <td></td> -->
+                                                  <!-- <td></td>-->
+                                                  <td>{{row.nomor_tilang}}</td>
                                                   <td>{{row.no_plat}}</td>
-                                                  <td>{{row.filename}}</td>
+                                                  <!-- <td>{{row.filename}}</td>-->
                                                   <td>{{row.pelanggaran}}</td>
-                                                  <td>{{row.filename_pelanggaran}}</td>
+                                                  <!-- <td>{{row.filename_pelanggaran}}</td>-->
+                                                  <!-- <td>
+                                                       {{row.akurasi}} %
+                                                  </td> -->
                                                   <td style="width: 1px;">{{row.tanggal}}</td>
 
                                                   <td>
-                                                       <a href="{{ ('delete') }}"
-                                                            onclick="return confirm('Yakin hapus data')"><i class="
+                                                       <a href="delete_tilang/{{ row.id }}"
+                                                            onclick="return confirm('Yakin hapus data tilang?')"><i
+                                                                 class="
                                                             fa fa-trash" style="color: red;"></i></a>
                                                   </td>
 
@@ -73,34 +77,9 @@
           </div>
      </div>
 </div>
-  <script>
-    $(document).ready( function () {
-      var empDataTable = $('#empTable').DataTable({
-          'processing': true,
-          'serverSide': true,
-          'serverMethod': 'post',
-          'ajax': {
-               'url':'/tilang'
-          }
-          'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-          searching: true,
-          sort: false,
-          "serverSide": true,
-          'columns': [
-               { data: 'no_plat' },
-               { data: 'filename' },
-               { data: 'filename_pelanggaran' },
-               { data: 'pelanggaran' },
-               { data: 'akurasi' },
-               { data: 'tanggal' },
-          ]
-      });
-    });
-  </script>
 
-<script>
-     $(document).ready( function () {
-          $('#myTable').DataTable();
-     } );
-</script>
 {% endblock %}
+
+<!--{% block scripts %}-->
+
+<!--{% endblock %}-->

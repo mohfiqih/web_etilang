@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block title %} Video Testing {% endblock %}
+{% block title %} Admin - Video Testing {% endblock %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
                <ol class="breadcrumb bg-primary">
                     <li class="breadcrumb-item"><a href="">Home</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Live Stream
+                    <li class="breadcrumb-item active" aria-current="page">Video Testing
                     </li>
                </ol>
           </nav>
@@ -21,11 +21,14 @@
                <div class="card">
                     <div class="card-body">
                          <div style="overflow: auto;">
-                              <center>
-                                   <video controls width="100%" height="450">
-                                        <source src="{{url_for('static',filename='video/video_testing.mp4')}}"
-                                             type="video/mp4">
+                              <!-- <center>
+                                   <video controls width="90%" height="450">
+                                        <source src="{{ url_for('video') }}" type="video/mp4">
                                    </video>
+                              </center> -->
+                              <center>
+                                   <img style="border-radius: 10px;" src="{{ url_for('video') }}" width="100%"
+                                        height="480" />
                               </center>
                          </div>
                     </div>

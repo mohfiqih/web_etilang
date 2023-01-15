@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block title %} Live Stream {% endblock %}
+{% block title %} Admin - Live Stream {% endblock %}
 
 {% block content %}
 
@@ -17,20 +17,20 @@
           </nav>
      </div>
      <div class="row push">
-          <div class="col-md-6">
+          <div class="col-md-12">
                <div class="card">
                     <div class="card-body">
                          <div style="overflow: auto;">
-                              <h5>Kamera Live Stream :</h5><br />
+                              <!-- <h5>Kamera Live Stream :</h5><br /> -->
                               <center>
-                                   <img style="border-radius: 10px;" src="{{ url_for('video') }}" width="100%"
-                                        height="100%" />
+                                   <img style="border-radius: 10px;" src="{{ url_for('live') }}" width="90%"
+                                        height="450" />
                               </center>
                          </div>
                     </div>
                </div>
           </div>
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
                <div class="card">
                     <div class="card-body">
                          <div style="overflow: auto;">
@@ -41,7 +41,7 @@
                          </div>
                     </div>
                </div>
-          </div>
+          </div> -->
      </div>
      </form>
 </div>
